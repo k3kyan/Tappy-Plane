@@ -1,8 +1,12 @@
 extends CharacterBody2D
 
+class_name Tappy
+
 const JUMP_POWER: float = -350.0
 # remember: _ means class level variable, so everything in this class/file can access this variable
 var _gravity = ProjectSettings.get("physics/2d/default_gravity");
+
+signal on_plane_died #super important!! good to learn
 
 # reference so that we can use the animation player !!!! thats how we reference child nodes etc
 @onready var animation_player: AnimationPlayer = $AnimationPlayer

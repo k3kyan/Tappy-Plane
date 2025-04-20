@@ -29,3 +29,10 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 func die():
 	set_process(false)
 	queue_free()
+
+func _on_pipe_body_entered(body: Node2D) -> void:
+	##print("Hit pipe")
+	#print(body) # printing the body is more specific than printing "Hit Plane". dont do that. be as specific as u can if u wanna debug stuff.
+	## also, the "body" var that we are printing is the Node2d that is being passed into this function (look above)
+	if body is Tappy:
+		body.die()
