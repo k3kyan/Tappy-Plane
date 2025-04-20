@@ -37,3 +37,8 @@ func spawn() -> void:
 	pipes_holder.add_child(newPipes)
 	
 	
+
+
+func _on_plane_on_plane_died() -> void:
+	print("Game::Plane has died")
+	get_tree().paused = true #Used to pause the ENTIRE tree (of this scene)

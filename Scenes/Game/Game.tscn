@@ -29,4 +29,5 @@ position = Vector2(530, 154)
 [node name="LowerMarker" type="Marker2D" parent="."]
 position = Vector2(530, 576)
 
+[connection signal="on_plane_died" from="Plane" to="." method="_on_plane_on_plane_died"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

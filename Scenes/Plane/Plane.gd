@@ -36,6 +36,8 @@ func jump(delta: float):
 		animation_player.play("jump")
 		
 func die():
-		animated_sprite_2d.stop() # remember to right click and Open Documentation if ur curious on what the node can do
-		set_physics_process(false) #remember to set the process to false to prevent issues or more processing that we dont know about
-		# !! if this wasn't set to false, the physics_process function would still be running, AKA the player could still jump even if the animation is stopped.
+	animated_sprite_2d.stop() # remember to right click and Open Documentation if ur curious on what the node can do
+	set_physics_process(false) #remember to set the process to false to prevent issues or more processing that we dont know about
+	# !! if this wasn't set to false, the physics_process function would still be running, AKA the player could still jump even if the animation is stopped.
+#		EMIT THE SIGNAL HERE!!!!! YOU EMIT SIGNALS FROM FUNCTIONS WHEN FUNCTIONS ARE TRIGGERED!!!!
+	on_plane_died.emit()
