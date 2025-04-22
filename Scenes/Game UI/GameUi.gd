@@ -5,6 +5,7 @@ extends Control
 @onready var game_over: Label = $"MarginContainer/Game Over"
 @onready var press_space: Label = $"MarginContainer/Press Space"
 @onready var timer: Timer = $Timer
+@onready var animation_player: AnimationPlayer = $"MarginContainer/Press Space/AnimationPlayer"
 
 #needed the GameUI node to be inside a CanvasLayer node in order to center and display correctly on the screen. Maybe bc its a UI node? not sure. 
 
@@ -37,3 +38,4 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_timer_timeout() -> void:
 	game_over.hide()
 	press_space.show()
+	animation_player.play("flash")
