@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://babrykoujs1g3"]
+
+[ext_resource type="Script" uid="uid://cr6hrmt6p62f8" path="res://Scenes/Game UI/GameUi.gd" id="1_dpknd"]
+[ext_resource type="LabelSettings" uid="uid://dlwkf0bwv6u85" path="res://Scenes/Main/red_text_title_72.tres" id="2_r0wlv"]
+[ext_resource type="LabelSettings" uid="uid://xlir8wu4w27i" path="res://Scenes/Main/red_text_pressplay_72.tres" id="3_qxh03"]
+
+[node name="Game UI" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dpknd")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Score" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "0"
+label_settings = ExtResource("2_r0wlv")
+
+[node name="Game Over" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Game Over"
+label_settings = ExtResource("2_r0wlv")
+
+[node name="Press Space" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Press Space"
+label_settings = ExtResource("3_qxh03")

@@ -6,7 +6,7 @@ const JUMP_POWER: float = -350.0
 # remember: _ means class level variable, so everything in this class/file can access this variable
 var _gravity = ProjectSettings.get("physics/2d/default_gravity");
 
-signal on_plane_died #super important!! good to learn
+#signal on_plane_died #super important!! good to learn
 
 # reference so that we can use the animation player !!!! thats how we reference child nodes etc
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -40,4 +40,4 @@ func die():
 	set_physics_process(false) #remember to set the process to false to prevent issues or more processing that we dont know about
 	# !! if this wasn't set to false, the physics_process function would still be running, AKA the player could still jump even if the animation is stopped.
 #		EMIT THE SIGNAL HERE!!!!! YOU EMIT SIGNALS FROM FUNCTIONS WHEN FUNCTIONS ARE TRIGGERED!!!!
-	on_plane_died.emit()
+	SignalHub.on_plane_died.emit()

@@ -13,10 +13,11 @@ const PIPES = preload("res://Scenes/Pipes/Pipes.tscn")
 func _ready() -> void:
 	spawn()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-	#pass
+func _enter_tree() -> void:
+	SignalHub.on_plane_died.connect(_on_plane_on_plane_died)
+#	Connects with the on_plane_died from the SIGNALHUB.GD
+#	then connects that to the signal function IN THIS FILE !!! down below. thats what function it calls!!!!
+#	Signal bus, super important!!!!!
 
 
 func _on_spawn_timer_timeout() -> void:
@@ -35,9 +36,6 @@ func spawn() -> void:
 		newPipes_y
 	)
 	pipes_holder.add_child(newPipes)
-	
-	
-
 
 func _on_plane_on_plane_died() -> void:
 	print("Game::Plane has died")
