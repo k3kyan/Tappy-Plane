@@ -9,8 +9,11 @@ extends Control
 
 #needed the GameUI node to be inside a CanvasLayer node in order to center and display correctly on the screen. Maybe bc its a UI node? not sure. 
 
+var _score;
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	_score = 0;
 	game_over.hide()
 	press_space.hide()
 
@@ -18,12 +21,17 @@ func _ready() -> void:
 
 func _enter_tree() -> void:
 	SignalHub.on_plane_died.connect(gameoversequence)
+	SignalHub.score_point.connect(score_point)
+	
+func score_point() -> void:
+	_score += 1;
+	score.text = "%04d" % _score
+	
 
 func gameoversequence() -> void:
 	game_over.show()
 	timer.start()
 #	now need to have a signal to tell us when the timer has ended !!!!!! yes it needs to be a signal :(
-
 
 
 func _unhandled_input(event: InputEvent) -> void:

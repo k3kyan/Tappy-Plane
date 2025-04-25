@@ -2,6 +2,8 @@ extends Node2D
 
 class_name Pipes
 
+@onready var laser: Area2D = $Laser
+
 var SPEED: float = 120.0 #pixels per second
 var OFF_SCREEN: float = 100.0
 
@@ -36,3 +38,11 @@ func _on_pipe_body_entered(body: Node2D) -> void:
 	## also, the "body" var that we are printing is the Node2d that is being passed into this function (look above)
 	if body is Tappy:
 		body.die()
+
+
+func _on_laser_body_entered(body: Node2D) -> void:
+#	if statement so no double scoring
+	if body is Tappy:
+		laser.body_entered.disconnect(_on_laser_body_entered);
+		#laser.disconnect("body_entered", _on_laser_body_entered)
+	SignalHub.score_point.emit();
