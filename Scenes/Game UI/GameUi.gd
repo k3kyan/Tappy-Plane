@@ -40,6 +40,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		#get_tree().change_scene_to_packed(MAIN)
 		GameManager.load_main_scene()
 	elif press_space.visible and event.is_action_pressed("jump"):
+		ScoreManager.highscore = _score
 		GameManager.load_main_scene()
 
 
