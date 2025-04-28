@@ -37,10 +37,11 @@ func gameoversequence() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 #	 can exit game by pressing esc at any time or with space once the "press space" text is shown
 	if event.is_action_pressed("Exit"):
+		ScoreManager.highscore_gs = _score # this is where my mistake was. i used highscore instead of highscore_gs
 		#get_tree().change_scene_to_packed(MAIN)
 		GameManager.load_main_scene()
 	elif press_space.visible and event.is_action_pressed("jump"):
-		ScoreManager.highscore = _score
+		ScoreManager.highscore_gs = _score # this is where my mistake was. i used highscore instead of highscore_gs
 		GameManager.load_main_scene()
 
 
