@@ -6,6 +6,9 @@ extends Control
 @onready var press_space: Label = $"MarginContainer/Press Space"
 @onready var timer: Timer = $Timer
 @onready var animation_player: AnimationPlayer = $"MarginContainer/Press Space/AnimationPlayer"
+@onready var sound_effects: AudioStreamPlayer = $"Sound Effects"
+const GAME_OVER_WAV = preload("res://assets/audio/game_over.wav")
+
 
 #needed the GameUI node to be inside a CanvasLayer node in order to center and display correctly on the screen. Maybe bc its a UI node? not sure. 
 
@@ -24,11 +27,15 @@ func _enter_tree() -> void:
 	SignalHub.score_point.connect(score_point)
 	
 func score_point() -> void:
+	sound_effects.play()
 	_score += 1;
 	score.text = "%04d" % _score
 	
 
 func gameoversequence() -> void:
+	sound_effects.stop()
+	sound_effects.stream = GAME_OVER_WAV
+	sound_effects.play()
 	game_over.show()
 	timer.start()
 #	now need to have a signal to tell us when the timer has ended !!!!!! yes it needs to be a signal :(

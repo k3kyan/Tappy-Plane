@@ -11,6 +11,7 @@ var _gravity = ProjectSettings.get("physics/2d/default_gravity");
 # reference so that we can use the animation player !!!! thats how we reference child nodes etc
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var engine_sound: AudioStreamPlayer = $EngineSound
 
 
 # Called when the node enters the scene tree for the first time.
@@ -36,6 +37,7 @@ func jump(delta: float):
 		animation_player.play("jump")
 		
 func die():
+	engine_sound.stop()
 	animated_sprite_2d.stop() # remember to right click and Open Documentation if ur curious on what the node can do
 	set_physics_process(false) #remember to set the process to false to prevent issues or more processing that we dont know about
 	# !! if this wasn't set to false, the physics_process function would still be running, AKA the player could still jump even if the animation is stopped.

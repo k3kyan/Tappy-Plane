@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://babrykoujs1g3"]
+[gd_scene load_steps=8 format=3 uid="uid://babrykoujs1g3"]
 
 [ext_resource type="Script" uid="uid://cr6hrmt6p62f8" path="res://Scenes/Game UI/GameUi.gd" id="1_dpknd"]
 [ext_resource type="LabelSettings" uid="uid://dlwkf0bwv6u85" path="res://Scenes/Main/red_text_title_72.tres" id="2_r0wlv"]
 [ext_resource type="LabelSettings" uid="uid://xlir8wu4w27i" path="res://Scenes/Main/red_text_pressplay_72.tres" id="3_qxh03"]
+[ext_resource type="AudioStream" uid="uid://3w620yv41ek7" path="res://assets/audio/score.wav" id="4_r0wlv"]
 
 [sub_resource type="Animation" id="Animation_dpknd"]
 resource_name = "flash"
@@ -93,5 +94,8 @@ libraries = {
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="Sound Effects" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_r0wlv")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
