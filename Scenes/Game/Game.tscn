@@ -10,6 +10,7 @@
 script = ExtResource("1_ln2h6")
 
 [node name="ParallaxBg" parent="." instance=ExtResource("2_3k6gv")]
+scale = Vector2(0.79, 0.79)
 
 [node name="Plane" parent="." instance=ExtResource("2_gwu2e")]
 position = Vector2(82, 343)
